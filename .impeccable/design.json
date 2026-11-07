@@ -1,0 +1,344 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-11-07T15:32:23+00:00",
+  "title": "Design System: Биржа доверия",
+  "extensions": {
+    "colorMeta": {
+      "accent": {
+        "role": "primary",
+        "displayName": "Зелёный «в вашу пользу»",
+        "canonical": "#34eb77",
+        "tonalRamp": [
+          "#001400",
+          "#003400",
+          "#005600",
+          "#007b18",
+          "#00a230",
+          "#2fc363",
+          "#77e593",
+          "#afffc2"
+        ]
+      },
+      "ink": {
+        "role": "neutral",
+        "displayName": "Тушь",
+        "canonical": "#14140f",
+        "tonalRamp": [
+          "#0b0b09",
+          "#252522",
+          "#42423e",
+          "#62625c",
+          "#83837c",
+          "#a5a5a0",
+          "#c9c9c4",
+          "#efefea"
+        ]
+      },
+      "paper": {
+        "role": "neutral",
+        "displayName": "Тёплая бумага",
+        "canonical": "#f5f5eb",
+        "tonalRamp": [
+          "#0b0b08",
+          "#252521",
+          "#42423c",
+          "#62625a",
+          "#83837a",
+          "#a6a69e",
+          "#cacac3",
+          "#efefe9"
+        ]
+      },
+      "canvas": {
+        "role": "neutral",
+        "displayName": "Белый холст",
+        "canonical": "#ffffff",
+        "tonalRamp": [
+          "#0b0b0b",
+          "#252525",
+          "#424242",
+          "#616161",
+          "#828282",
+          "#a5a5a5",
+          "#c9c9c9",
+          "#eeeeee"
+        ]
+      },
+      "line": {
+        "role": "neutral",
+        "displayName": "Линия",
+        "canonical": "#d2d2c8",
+        "tonalRamp": [
+          "#0b0b08",
+          "#252521",
+          "#42423c",
+          "#62625a",
+          "#83837a",
+          "#a6a69d",
+          "#cacac2",
+          "#efefe9"
+        ]
+      },
+      "graphite": {
+        "role": "neutral",
+        "displayName": "Графит",
+        "canonical": "#6e6e64",
+        "tonalRamp": [
+          "#0b0b08",
+          "#252520",
+          "#42423c",
+          "#626259",
+          "#838379",
+          "#a6a69c",
+          "#cacac2",
+          "#efefe8"
+        ]
+      },
+      "island": {
+        "role": "neutral",
+        "displayName": "Графитовый остров",
+        "canonical": "#30302a",
+        "tonalRamp": [
+          "#0b0b09",
+          "#252522",
+          "#42423e",
+          "#62625c",
+          "#83837c",
+          "#a5a59f",
+          "#c9c9c4",
+          "#efefea"
+        ]
+      },
+      "live": {
+        "role": "signal",
+        "displayName": "Сигнальный красный",
+        "canonical": "#e5484d",
+        "tonalRamp": [
+          "#270000",
+          "#500005",
+          "#7d0d1a",
+          "#ad2730",
+          "#de4248",
+          "#fc7573",
+          "#ffa39e",
+          "#ffd0ca"
+        ]
+      },
+      "warning": {
+        "role": "signal",
+        "displayName": "Янтарь",
+        "canonical": "#f5a524",
+        "tonalRamp": [
+          "#1d0300",
+          "#401900",
+          "#663300",
+          "#8f5000",
+          "#ba6f00",
+          "#d99632",
+          "#f7bd71",
+          "#ffe5a8"
+        ]
+      }
+    },
+    "typographyMeta": {
+      "display": {
+        "displayName": "Display",
+        "purpose": "Главный вопрос экрана, один на экран."
+      },
+      "numeral": {
+        "displayName": "Numeral",
+        "purpose": "Крупные цифры на острове: залог, рейтинг, экономия."
+      },
+      "headline": {
+        "displayName": "Headline",
+        "purpose": "Заголовок карточки."
+      },
+      "title": {
+        "displayName": "Title",
+        "purpose": "Заголовок ответа ИИ."
+      },
+      "lead": {
+        "displayName": "Lead",
+        "purpose": "Подзаголовок под Display."
+      },
+      "body": {
+        "displayName": "Body",
+        "purpose": "Основной текст, кнопки, поля."
+      },
+      "label": {
+        "displayName": "Label",
+        "purpose": "Подписи, чипы, шаги."
+      },
+      "caption": {
+        "displayName": "Caption",
+        "purpose": "Плашка ИИ, бейджи."
+      }
+    },
+    "shadows": [],
+    "motion": [
+      {
+        "name": "ease-out",
+        "value": "cubic-bezier(0.23, 1, 0.32, 1)",
+        "purpose": "Нажатия, появление, проявление текста."
+      },
+      {
+        "name": "ease-in-out",
+        "value": "cubic-bezier(0.77, 0, 0.175, 1)",
+        "purpose": "Перетекание ползунка и сегментов пула."
+      },
+      {
+        "name": "dur-press",
+        "value": "160ms",
+        "purpose": "Сжатие при нажатии до 0.97."
+      },
+      {
+        "name": "dur-fast",
+        "value": "200ms",
+        "purpose": "Смена цвета при наведении."
+      },
+      {
+        "name": "dur-base",
+        "value": "250ms",
+        "purpose": "Переключатели и смена состояний."
+      },
+      {
+        "name": "dur-reveal",
+        "value": "450ms",
+        "purpose": "Проявление ответа ИИ и новых строк."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "lg",
+        "value": "1180px"
+      },
+      {
+        "name": "md",
+        "value": "900px"
+      },
+      {
+        "name": "sm",
+        "value": "560px"
+      }
+    ]
+  },
+  "components": [
+    {
+      "name": "Главная кнопка",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "Главное действие экрана: зелёная таблетка 56 px и круглый хвост со стрелкой.",
+      "html": "<button class=\"ds-btn\"><span class=\"ds-btn-label\">Присоединиться к пулу</span><span class=\"ds-btn-icon\"><svg width=\"22\" height=\"22\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.9\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M5 12h14M13 6l6 6-6 6\"/></svg></span></button>",
+      "css": ".ds-btn { display: inline-flex; gap: 4px; padding: 0; border: 0; background: none; color: var(--ink, #14140f); font-family: var(--font, Onest, system-ui, sans-serif); font-size: 17px; font-weight: 500; cursor: pointer; transition: transform 160ms cubic-bezier(0.23,1,0.32,1); } .ds-btn:active { transform: scale(0.97); } .ds-btn-label, .ds-btn-icon { display: inline-flex; align-items: center; justify-content: center; height: 56px; border-radius: 9999px; background: var(--accent, #34eb77); transition: background-color 200ms ease; } .ds-btn-label { padding: 0 28px; } .ds-btn-icon { width: 56px; } .ds-btn:hover .ds-btn-label, .ds-btn:hover .ds-btn-icon { background: var(--accent-hover, #2bd96a); } .ds-btn:hover svg { transform: translateX(2px); } .ds-btn svg { transition: transform 200ms cubic-bezier(0.23,1,0.32,1); } .ds-btn:focus-visible { outline: 2px solid var(--ink, #14140f); outline-offset: 3px; border-radius: 9999px; }"
+    },
+    {
+      "name": "Вторичная кнопка",
+      "kind": "button",
+      "refersTo": "button-ghost",
+      "description": "«Назад» и вторичные действия: прозрачная таблетка с обводкой.",
+      "html": "<button class=\"ds-btn-ghost\">Назад</button>",
+      "css": ".ds-btn-ghost { height: 56px; padding: 0 28px; border: 1px solid var(--line, #d2d2c8); border-radius: 9999px; background: transparent; color: var(--ink, #14140f); font-family: var(--font, Onest, system-ui, sans-serif); font-size: 17px; font-weight: 500; cursor: pointer; transition: background-color 200ms ease, transform 160ms cubic-bezier(0.23,1,0.32,1); } .ds-btn-ghost:hover { background: var(--paper, #f5f5eb); } .ds-btn-ghost:active { transform: scale(0.97); } .ds-btn-ghost:focus-visible { outline: 2px solid var(--ink, #14140f); outline-offset: 3px; }"
+    },
+    {
+      "name": "Поле запроса",
+      "kind": "input",
+      "refersTo": "ask-input",
+      "description": "Крупное поле на естественном языке с зелёным кольцом фокуса.",
+      "html": "<div class=\"ds-ask\"><input class=\"ds-ask-input\" value=\"Нужно 3 т муки в Фергану до 15 ноября\" aria-label=\"Что нужно купить\"></div>",
+      "css": ".ds-ask { display: flex; padding: 8px 28px; border: 1px solid var(--line, #d2d2c8); border-radius: 28px; background: var(--canvas, #fff); transition: border-color 200ms ease, box-shadow 200ms ease; } .ds-ask:focus-within { border-color: var(--ink, #14140f); box-shadow: 0 0 0 3px var(--accent, #34eb77); } .ds-ask-input { flex: 1; min-height: 56px; border: 0; outline: 0; background: none; color: var(--ink, #14140f); font-family: var(--font, Onest, system-ui, sans-serif); font-size: 22px; }"
+    },
+    {
+      "name": "Чип",
+      "kind": "chip",
+      "refersTo": "chip",
+      "description": "Пример запроса с цветной точкой товара.",
+      "html": "<button class=\"ds-chip\"><span class=\"ds-chip-dot\"></span>Мука</button>",
+      "css": ".ds-chip { display: inline-flex; align-items: center; gap: 8px; height: 40px; padding: 0 16px 0 14px; border: 1px solid var(--line, #d2d2c8); border-radius: 9999px; background: var(--canvas, #fff); color: var(--ink, #14140f); font-family: var(--font, Onest, system-ui, sans-serif); font-size: 15px; font-weight: 500; cursor: pointer; transition: background-color 200ms ease; } .ds-chip:hover { background: var(--paper, #f5f5eb); } .ds-chip:focus-visible { outline: 2px solid var(--ink, #14140f); outline-offset: 3px; } .ds-chip-dot { width: 8px; height: 8px; border-radius: 9999px; background: var(--flour, #a87920); }"
+    },
+    {
+      "name": "Карточка-остров",
+      "kind": "card",
+      "refersTo": "card-island",
+      "description": "Тёмная карточка для денег и итогов.",
+      "html": "<div class=\"ds-island\"><div class=\"ds-island-k\">Залог сейчас</div><div class=\"ds-island-v\">10%</div><div class=\"ds-island-k\">Рейтинг 40 — новичок</div></div>",
+      "css": ".ds-island { padding: 32px; border-radius: 28px; background: var(--island, #30302a); color: var(--on-island, #f5f5eb); font-family: var(--font, Onest, system-ui, sans-serif); } .ds-island-k { font-size: 15px; color: var(--muted-on-island, #b9b9ad); } .ds-island-v { margin: 4px 0; font-size: 56px; line-height: 1; font-weight: 500; letter-spacing: -0.03em; font-variant-numeric: tabular-nums; }"
+    },
+    {
+      "name": "Ответ ИИ",
+      "kind": "card",
+      "refersTo": "card-paper",
+      "description": "Бумажная карточка с зелёной полосой сверху и плашкой ИИ.",
+      "html": "<div class=\"ds-ai\"><span class=\"ds-ai-badge\"><span class=\"ds-ai-dot\"></span>ИИ нашёл пул</span><p class=\"ds-ai-title\">Ещё 4 магазина рядом ищут ту же муку</p><p class=\"ds-ai-text\">Вместе вы купите целую машину по оптовой цене.</p></div>",
+      "css": ".ds-ai { position: relative; overflow: hidden; padding: 36px 32px 32px; border-radius: 28px; background: var(--paper, #f5f5eb); font-family: var(--font, Onest, system-ui, sans-serif); } .ds-ai::before { content: ''; position: absolute; inset: 0 0 auto 0; height: 4px; background: var(--accent, #34eb77); } .ds-ai-badge { display: inline-flex; align-items: center; gap: 8px; height: 30px; padding: 0 14px 0 11px; border-radius: 9999px; background: var(--ink, #14140f); color: var(--paper, #f5f5eb); font-size: 13px; font-weight: 500; } .ds-ai-dot { width: 8px; height: 8px; border-radius: 9999px; background: var(--accent, #34eb77); } .ds-ai-title { margin: 18px 0 0; font-size: 24px; line-height: 1.2; font-weight: 500; letter-spacing: -0.02em; color: var(--ink, #14140f); } .ds-ai-text { margin: 10px 0 0; font-size: 17px; line-height: 1.5; color: var(--graphite, #6e6e64); }"
+    },
+    {
+      "name": "Полоса пула",
+      "kind": "custom",
+      "refersTo": null,
+      "description": "Пул и есть прогресс: сегмент на каждого участника по его тоннам.",
+      "html": "<div class=\"ds-pool\" role=\"img\" aria-label=\"Собрано 15 из 20 т\"><span style=\"flex:4\"></span><span style=\"flex:3\"></span><span style=\"flex:3\"></span><span style=\"flex:2\"></span><span class=\"you\" style=\"flex:3\"></span><span class=\"free\" style=\"flex:5\"></span></div>",
+      "css": ".ds-pool { display: flex; gap: 3px; width: 320px; height: 14px; border-radius: 9999px; background: var(--line, #d2d2c8); overflow: hidden; } .ds-pool span { min-width: 0; border-radius: 9999px; background: var(--ink, #14140f); } .ds-pool .you { background: var(--accent, #34eb77); } .ds-pool .free { background: none; }"
+    },
+    {
+      "name": "Рейтинг доверия",
+      "kind": "chip",
+      "refersTo": "trust-high",
+      "description": "Число рейтинга в таблетке: высокий, средний, низкий.",
+      "html": "<span class=\"ds-trust high\">92</span> <span class=\"ds-trust mid\">63</span> <span class=\"ds-trust low\">38</span>",
+      "css": ".ds-trust { display: inline-grid; place-items: center; min-width: 40px; height: 28px; padding: 0 10px; border-radius: 9999px; font-family: var(--font, Onest, system-ui, sans-serif); font-size: 14px; font-weight: 500; font-variant-numeric: tabular-nums; color: var(--ink, #14140f); } .ds-trust.high { background: var(--ink, #14140f); color: var(--accent, #34eb77); } .ds-trust.mid { background: var(--warning, #f5a524); } .ds-trust.low { background: var(--live, #e5484d); }"
+    }
+  ],
+  "narrative": {
+    "northStar": "Честные весы",
+    "overview": "Интерфейс работает как весы на рынке: всё взвешено и видно, ничего не спрятано. Главное на экране — цифры, которые решают за участника (залог, рейтинг, тонны, сумма): они крупные, спокойные и всегда с причиной рядом. Зелёный цвет — стрелка весов, качнувшаяся в пользу участника: выбранное, выгодное, завершённое. Всё остальное отступает в тёплую бумагу и тушь.\n\nПлотность низкая, как в прототипе: крупные цели для нажатия (56 px у главных кнопок), много воздуха, один главный вопрос на экран. Поверхности плоские: глубина передаётся тоном, а не тенями.",
+    "keyCharacteristics": [
+      "Крупные спокойные цифры с табличными цифрами (tnum) и причиной рядом.",
+      "Зелёный только «в вашу пользу»; красный — только сигнал проблемы.",
+      "Тёмный «остров» — место для денег и итогов.",
+      "Таблетки для всего, что нажимается; мягкие карточки для всего, что содержит.",
+      "Плоско, без теней; движение короткое и с уважением к reduced motion."
+    ],
+    "rules": [
+      {
+        "name": "The «В вашу пользу» Rule",
+        "body": "Зелёный значит «выгодно, выбрано или готово». Никогда не для ошибок, предупреждений или украшения. Если элемент не про пользу участника, он не зелёный.",
+        "section": "colors"
+      },
+      {
+        "name": "The Signal Rule",
+        "body": "Красный и янтарь появляются только как сигнал состояния (рейтинг, риск, отказ), никогда как декор.",
+        "section": "colors"
+      },
+      {
+        "name": "The Calm Numbers Rule",
+        "body": "Деньги, тонны, проценты и рейтинги — всегда вес 500 и табличные цифры, чтобы при пересчёте ничего не прыгало. Большое число без пояснения рядом запрещено.",
+        "section": "typography"
+      },
+      {
+        "name": "The Flat-By-Default Rule",
+        "body": "Никаких box-shadow, градиентов и размытия фона. Если элементу нужно выделиться, меняется тон слоя, а не появляется тень.",
+        "section": "elevation"
+      },
+      {
+        "name": "The Island Rule",
+        "body": "Тёмная карточка-остров — только для денег, итогов и изменения рейтинга. Не больше одного острова на колонку.",
+        "section": "elevation"
+      }
+    ],
+    "dos": [
+      "Do брать цвета, радиусы и длительности только из токенов (CSS-переменные из frontend/src/shared/styles/tokens.scss).",
+      "Do оставлять одну зелёную главную кнопку на группу действий; остальные — ghost или текстовые ссылки.",
+      "Do класть деньги, итоги и изменение рейтинга на остров и рядом объяснять, откуда цифра.",
+      "Do показывать табличные цифры для денег, тонн, процентов и рейтингов.",
+      "Do держать цели для нажатия не меньше 40 px, а главные — 56 px.",
+      "Do уважать prefers-reduced-motion: анимации проявления заменяются плавным появлением, сжатие при нажатии отключается."
+    ],
+    "donts": [
+      "Don't использовать тени, градиенты и размытие фона.",
+      "Don't красить ошибки или предупреждения в зелёный и не использовать красный для украшения.",
+      "Don't ставить логотип или фирменные цвета UZEX: у продукта свой бренд.",
+      "Don't ставить больше одного Display-заголовка на экран.",
+      "Don't показывать большое число без пояснения, из чего оно сложилось."
+    ]
+  }
+}
