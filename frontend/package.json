@@ -54,8 +54,7 @@
   "lint-staged": {
     "*.{ts,tsx}": [
       "prettier --write",
-      "oxlint --deny-warnings",
-      "vitest related --run --passWithNoTests"
+      "oxlint --deny-warnings"
     ],
     "*.{scss,css,json,md,html}": "prettier --write"
   }

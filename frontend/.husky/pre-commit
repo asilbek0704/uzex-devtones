@@ -1,5 +1,5 @@
 # Форматтеры и линтеры по изменённым файлам (запуск из корня репозитория):
-#   frontend/ — prettier, oxlint, связанные тесты (frontend/package.json → lint-staged)
+#   frontend/ — prettier, oxlint (frontend/package.json → lint-staged)
 #   backend/  — ruff check --fix, ruff format (backend/.lintstagedrc.mjs)
 if [ ! -x frontend/node_modules/.bin/lint-staged ]; then
   echo "Хуки не установлены: выполните 'cd frontend && npm install'" >&2

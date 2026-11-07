@@ -25,7 +25,7 @@ Python 3.12 + FastAPI.
 | Форматирование | `sh ../../scripts/ruff.sh format .` |
 | Тесты | `sh ../../scripts/pytest.sh .` |
 
-`scripts/ruff.sh` запускает ruff той же версии, что и CI. Pre-commit делает линтер и форматирование сам, pre-push — тесты.
+`scripts/ruff.sh` запускает закреплённую версию ruff, чтобы у всех форматировалось одинаково. Pre-commit делает линтер и форматирование сам, pre-push — тесты.
 
 ## 3. Контракт с фронтендом
 
