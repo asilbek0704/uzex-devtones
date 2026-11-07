@@ -8,6 +8,8 @@
     "build": "tsc -b && vite build",
     "lint": "oxlint --deny-warnings",
     "preview": "vite preview",
+    "storybook": "storybook dev -p 6006",
+    "build-storybook": "storybook build -o dist/storybook",
     "test": "vitest",
     "test:run": "vitest run",
     "typecheck": "tsc -b",
@@ -32,6 +34,7 @@
     "zustand": "^5.1.0"
   },
   "devDependencies": {
+    "@storybook/react-vite": "^10.6.6",
     "@tanstack/react-query-devtools": "^5.107.1",
     "@testing-library/dom": "^10.4.2",
     "@testing-library/jest-dom": "^7.0.1",
@@ -47,6 +50,7 @@
     "oxlint": "^1.90.0",
     "prettier": "^3.9.10",
     "sass-embedded": "^1.108.1",
+    "storybook": "^10.6.6",
     "typescript": "~7.0.2",
     "vite": "^8.3.6",
     "vitest": "^5.1.0"
