@@ -34,3 +34,40 @@ export type Lot = {
   deliveryUntil: string
   myAdmission: MyAdmission
 }
+
+/** Правило продавца (§6 контракта) */
+export type SellerRule = {
+  minRating: number | null
+  newcomerMaxVolumeT: number | null
+}
+
+/** GET /api/lots/{lotId} */
+export type LotDetails = Lot & { rule: SellerRule | null }
+
+/** GET /api/lots/{lotId}/quote?volumeT= — только формулы, без ИИ */
+export type Quote = {
+  volumeT: number
+  admitted: boolean
+  reason: Reason | null
+  maxVolumeT: number | null
+  goodsAmount: number
+  deposit: {
+    pct: number
+    amount: number
+    tierMinRating: number
+    next: { pct: number; rating: number; dealsNeeded: number } | null
+  }
+  comparison: {
+    uzexToday: { brokerRequired: boolean; depositPctMax: number }
+    trustedExample: { rating: number; depositPct: number }
+  }
+}
+
+/** POST /api/lots/{lotId}/bids → 201 */
+export type Bid = {
+  id: string
+  lotId: string
+  volumeT: number
+  deposit: { pct: number; amount: number }
+  status: 'deposit_held'
+}

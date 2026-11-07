@@ -1,3 +1,5 @@
+@use '@/shared/styles/mixins' as *;
+
 .title {
   margin-top: 18px;
   font-size: 24px;
@@ -12,4 +14,33 @@
   font-size: 17px;
   line-height: 1.5;
   color: var(--graphite);
+}
+
+// Три строки текста 17px × 1.5 + отступ = 86 px: место под пояснение занято заранее
+.pending {
+  display: grid;
+  gap: 12px;
+  max-width: 40em;
+  margin-top: 14px;
+
+  span {
+    height: 16px;
+    border-radius: var(--radius-pill);
+    background: var(--paper-2);
+    animation: breathe 1.2s ease-in-out infinite alternate;
+
+    @include reduced-motion {
+      animation: none;
+    }
+
+    &:last-child {
+      width: 60%;
+    }
+  }
+}
+
+@keyframes breathe {
+  to {
+    opacity: 0.45;
+  }
 }

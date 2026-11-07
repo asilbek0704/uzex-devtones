@@ -9,4 +9,5 @@ export type {
   ParticipantRef,
   Persona,
 } from './model/types'
+export { DepositScale } from './ui/DepositScale'
 export { RatingBadge } from './ui/RatingBadge'
