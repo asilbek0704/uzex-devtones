@@ -1,0 +1,21 @@
+@use '@/shared/styles/mixins' as *;
+
+.link {
+  display: inline-block;
+  padding: 8px 0;
+  border: 0;
+  background: none;
+  color: var(--graphite);
+  font-size: 15px;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  text-decoration-color: var(--line);
+  cursor: pointer;
+
+  @include hover {
+    &:hover {
+      color: var(--ink);
+      text-decoration-color: var(--ink);
+    }
+  }
+}

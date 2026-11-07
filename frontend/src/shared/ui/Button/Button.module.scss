@@ -1,0 +1,78 @@
+@use '@/shared/styles/mixins' as *;
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: var(--ink);
+  font-size: 17px;
+  font-weight: 500;
+  cursor: pointer;
+  user-select: none;
+  @include pressable;
+
+  &:focus-visible {
+    outline: 2px solid var(--ink);
+    outline-offset: 3px;
+    border-radius: var(--radius-pill);
+  }
+
+  &:disabled {
+    cursor: not-allowed;
+    opacity: 0.4;
+    transform: none;
+  }
+}
+
+.label,
+.icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 56px;
+  border-radius: var(--radius-pill);
+  background: var(--accent);
+  transition: background-color var(--dur-fast) ease;
+}
+
+.label {
+  padding: 0 28px;
+  white-space: nowrap;
+
+  @include sm {
+    padding: 0 22px;
+  }
+}
+
+.icon {
+  width: 56px;
+
+  svg {
+    transition: transform var(--dur-fast) var(--ease-out);
+  }
+}
+
+.ghost .label {
+  background: transparent;
+  border: 1px solid var(--line);
+}
+
+@include hover {
+  .btn:not(:disabled):hover {
+    .label,
+    .icon {
+      background: var(--accent-hover);
+    }
+
+    .icon svg {
+      transform: translateX(2px);
+    }
+  }
+
+  .ghost:not(:disabled):hover .label {
+    background: var(--paper);
+  }
+}

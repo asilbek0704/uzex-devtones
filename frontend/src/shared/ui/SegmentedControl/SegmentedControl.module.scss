@@ -1,0 +1,74 @@
+@use '@/shared/styles/mixins' as *;
+
+.root {
+  position: relative;
+  display: inline-flex;
+  flex-wrap: nowrap;
+  max-width: 100%;
+  padding: 4px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-pill);
+  background: var(--canvas);
+}
+
+.thumb {
+  position: absolute;
+  top: 4px;
+  bottom: 4px;
+  left: 0;
+  width: 0;
+  border-radius: var(--radius-pill);
+  background: var(--accent);
+  transition:
+    transform var(--dur-base) var(--ease-in-out),
+    width var(--dur-base) var(--ease-in-out);
+
+  @include reduced-motion {
+    transition: none;
+  }
+}
+
+.item {
+  position: relative;
+  z-index: 1;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  height: 48px;
+  padding: 0 22px;
+  border: 0;
+  border-radius: var(--radius-pill);
+  background: none;
+  color: var(--graphite);
+  font-size: 17px;
+  font-weight: 500;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: color var(--dur-fast) ease;
+  @include pressable;
+
+  &[aria-checked='true'] {
+    color: var(--ink);
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--ink);
+    outline-offset: 2px;
+  }
+
+  @include hover {
+    &:not([aria-checked='true']):hover {
+      color: var(--ink);
+    }
+  }
+
+  @include sm {
+    padding: 0 14px;
+    font-size: 15px;
+  }
+}
+
+// Пока ползунок не измерен (первый кадр, SSR) — подсвечиваем сам пункт
+.root:not(.ready) .item[aria-checked='true'] {
+  background: var(--accent);
+}
