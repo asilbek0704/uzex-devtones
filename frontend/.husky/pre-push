@@ -1,0 +1,26 @@
+# 1. Прямой пуш в main запрещён — только через ветку и PR
+while read -r _local_ref _local_sha remote_ref _remote_sha; do
+  if [ "$remote_ref" = "refs/heads/main" ]; then
+    echo "⛔ Прямой пуш в main запрещён. Создайте ветку и откройте PR." >&2
+    exit 1
+  fi
+done
+
+# 2. Тесты тех частей, что изменились относительно main
+if git rev-parse --verify -q origin/main >/dev/null; then
+  changed=$(git diff --name-only origin/main...HEAD)
+else
+  changed=$(printf "frontend/\nbackend/api/\nbackend/ml-service/\n")
+fi
+
+if echo "$changed" | grep -q '^frontend/'; then
+  echo "▶ frontend: тесты"
+  (cd frontend && npm run --silent test:run) || exit 1
+fi
+
+for service in api ml-service; do
+  if echo "$changed" | grep -q "^backend/$service/"; then
+    echo "▶ backend/$service: тесты"
+    sh scripts/pytest.sh "backend/$service" || exit 1
+  fi
+done
