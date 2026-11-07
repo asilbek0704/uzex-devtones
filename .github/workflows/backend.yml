@@ -1,0 +1,64 @@
+name: Backend CI
+
+on:
+  pull_request:
+    paths:
+      - 'backend/**'
+      - '.github/workflows/backend.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'backend/**'
+      - '.github/workflows/backend.yml'
+
+concurrency:
+  group: backend-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+jobs:
+  check:
+    name: ${{ matrix.service }} — ruff, pytest
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    strategy:
+      fail-fast: false
+      matrix:
+        service: [api, ml-service]
+    defaults:
+      run:
+        working-directory: backend/${{ matrix.service }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: astral-sh/setup-uv@v6
+        with:
+          python-version: '3.12'
+
+      # Зависимости ставим из того, что есть в сервисе: pyproject.toml или requirements.txt
+      - name: Install dependencies
+        run: |
+          uv venv
+          if [ -f pyproject.toml ]; then
+            uv pip install -e .
+          elif [ -f requirements.txt ]; then
+            uv pip install -r requirements.txt
+          fi
+          uv pip install ruff pytest
+
+      - name: Ruff lint
+        run: uv run --no-sync ruff check --output-format=github .
+
+      - name: Ruff format
+        run: uv run --no-sync ruff format --check .
+
+      # Код 5 = тестов пока нет; это не ошибка для MVP
+      - name: Pytest
+        run: |
+          set +e
+          uv run --no-sync pytest -q
+          code=$?
+          if [ $code -eq 5 ]; then echo "Тестов пока нет"; exit 0; fi
+          exit $code
