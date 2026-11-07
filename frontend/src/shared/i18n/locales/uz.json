@@ -70,5 +70,67 @@
     "text": "Bu ekran keyingi bosqichda paydo bo‘ladi.",
     "notFoundText": "Havola eskirgan bo‘lishi mumkin.",
     "back": "Bosh sahifaga"
+  },
+  "lotPage": {
+    "backToLots": "Barcha lotlar",
+    "notFound": "Bunday lot yo‘q",
+    "facts": {
+      "volume": "Lotda",
+      "price": "Tonnasi narxi",
+      "delivery": "Yetkazib berish"
+    },
+    "rules": {
+      "title": "Sotuvchi qoidalari",
+      "minRating": "Reyting {{rating}} dan",
+      "newcomerMax": "Yangilarga — {{max}} t gacha",
+      "none": "Sotuvchi alohida qoida belgilamagan."
+    },
+    "volume": {
+      "label": "Necha tonna kerak?",
+      "less": "1 t kamroq",
+      "more": "1 t ko‘proq",
+      "goods": "Tovar: {{amount}}"
+    },
+    "verdict": {
+      "ok": "{{volume}} t ga ariza berish mumkin",
+      "thinking": "Sun’iy intellekt arizani tahlil qilmoqda",
+      "ai": "Sun’iy intellekt tushuntiradi",
+      "aiFailed": "Tushuntirish hozircha mavjud emas — yuqoridagi raqamlar ochiq qoidalar bo‘yicha hisoblangan.",
+      "ruleLabel": "Sotuvchi qoidasi — hamma uchun bir xil",
+      "takeMax": "{{max}} t olish",
+      "pool": "Qo‘shnilar bilan birga xarid qilish",
+      "otherLots": "Boshqa lotlar"
+    },
+    "submit": {
+      "label": "{{volume}} t ga ariza berish",
+      "pending": "Ariza yuborilmoqda…",
+      "hint": "{{amount}} garov birjaning kafolat hisobida bloklanadi. Sotuvchi pulni faqat siz yetkazib berishni tasdiqlaganingizdan keyin oladi."
+    },
+    "success": {
+      "status": "Ariza berildi",
+      "text": "{{volume}} t ga ariza qabul qilindi. {{amount}} garov birjaning kafolat hisobida — brokersiz va topshiriq shartnomasisiz."
+    },
+    "deposit": {
+      "title": "Shu ariza bo‘yicha garov",
+      "of": "{{volume}} t uchun {{goods}} dan",
+      "blocked": "Ariza sotuvchi qoidalaridan o‘tmaydi.",
+      "titleRating": "Reyting {{rating}} bo‘lganda garovingiz"
+    },
+    "compare": {
+      "title": "Kirish qancha turadi",
+      "uzex": "UZEX bugun",
+      "upTo": "{{pct}}% gacha",
+      "uzexCaption": "broker orqali zakalat",
+      "lookAs": "«{{name}}» sifatida ko‘rish",
+      "you": "Siz hozir, reyting {{rating}}",
+      "youCaption": "brokersiz",
+      "goal": "Reyting {{rating}} bo‘lsa",
+      "goalCaption": "uzilishsiz"
+    },
+    "loadError": "Lotni yuklab bo‘lmadi",
+    "submitError": {
+      "rejected": "Ariza o‘tmadi: {{reason}}. Hajmni o‘zgartirib, qayta urinib ko‘ring.",
+      "network": "Arizani yuborib bo‘lmadi. Internetni tekshiring va «Qayta urinish» tugmasini bosing."
+    }
   }
 }
