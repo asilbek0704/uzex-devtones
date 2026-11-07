@@ -35,6 +35,8 @@ type SegmentedControlProps<T extends string | number> = {
   value: T
   onChange: (value: T) => void
   'aria-label': string
+  /** sm — компактный вариант для шапки (пункты 40 px) */
+  size?: 'md' | 'sm'
   className?: string
 }
 
@@ -44,6 +46,7 @@ export function SegmentedControl<T extends string | number>({
   value,
   onChange,
   'aria-label': ariaLabel,
+  size = 'md',
   className,
 }: SegmentedControlProps<T>) {
   const rootRef = useRef<HTMLDivElement>(null)
@@ -103,7 +106,7 @@ export function SegmentedControl<T extends string | number>({
       ref={rootRef}
       role="radiogroup"
       aria-label={ariaLabel}
-      className={cn(s.root, ready && s.ready, className)}
+      className={cn(s.root, size === 'sm' && s.sm, ready && s.ready, className)}
     >
       <span ref={thumbRef} className={s.thumb} aria-hidden="true" />
       {options.map((option, i) => {

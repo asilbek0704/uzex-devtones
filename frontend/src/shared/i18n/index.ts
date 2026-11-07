@@ -22,4 +22,12 @@ void i18n
     interpolation: { escapeValue: false },
   })
 
+// <html lang> следует за языком интерфейса (озвучка, переносы, шрифты)
+i18n.on('languageChanged', (lng) => {
+  if (typeof document === 'undefined') return
+  document.documentElement.lang = lng
+  document.title = i18n.t('app.name')
+})
+
 export { i18n }
+export { useLanguage } from './useLanguage'

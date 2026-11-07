@@ -3,6 +3,7 @@ import type { SVGProps } from 'react'
 const PATHS = {
   arrow: <path d="M5 12h14M13 6l6 6-6 6" />,
   check: <path d="M5 12l5 5 9-10" />,
+  chevron: <path d="M6 9l6 6 6-6" />,
   truck: (
     <>
       <path d="M3 6h11v10H3zM14 9h4l3 3v4h-7" />

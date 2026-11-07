@@ -1,0 +1,137 @@
+@use '@/shared/styles/mixins' as *;
+
+.screen {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(300px, 360px);
+  grid-template-areas:
+    'head side'
+    'main side';
+  grid-template-rows: auto 1fr;
+  gap: 0 56px;
+  align-items: start;
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 56px var(--gutter) 64px;
+
+  @include lg {
+    gap: 0 40px;
+  }
+
+  @include md {
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-areas: 'head' 'main' 'side';
+    gap: 32px;
+    padding-top: 32px;
+  }
+}
+
+.head {
+  grid-area: head;
+}
+
+.side {
+  grid-area: side;
+  position: sticky;
+  top: 108px;
+  display: grid;
+  gap: 16px;
+
+  @include md {
+    position: static;
+  }
+}
+
+.main {
+  grid-area: main;
+  margin-top: 40px;
+
+  @include md {
+    margin-top: 0;
+  }
+}
+
+.list {
+  display: grid;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+
+  > li + li {
+    border-top: 1px solid var(--line);
+  }
+}
+
+.skeleton {
+  height: 86px;
+  margin: 8px 0;
+  border-radius: var(--radius-inner);
+  background: var(--paper);
+  animation: breathe 1.4s ease-in-out infinite alternate;
+
+  @include reduced-motion {
+    animation: none;
+  }
+}
+
+.state {
+  display: grid;
+  justify-items: start;
+  gap: 16px;
+  padding: 24px 0;
+  color: var(--graphite);
+
+  p {
+    margin: 0;
+  }
+}
+
+.pool {
+  display: grid;
+  justify-items: start;
+  gap: 20px;
+  padding: 28px 32px 32px;
+  border-radius: var(--radius-card);
+  background: var(--paper);
+
+  @include md {
+    padding: 24px;
+  }
+}
+
+// Один баннер виден на десктопе (под островом), другой — на телефоне (в списке)
+.poolDesktop {
+  @include md {
+    display: none;
+  }
+}
+
+.poolMobile {
+  display: none;
+
+  @include md {
+    display: grid;
+    margin: 4px 0 16px;
+  }
+}
+
+.poolTitle {
+  margin: 0;
+  text-wrap: balance;
+  font-size: 22px;
+  font-weight: 500;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+}
+
+.poolText {
+  margin: 6px 0 0;
+  max-width: 34em;
+  font-size: 16px;
+  color: var(--graphite);
+}
+
+@keyframes breathe {
+  to {
+    opacity: 0.55;
+  }
+}

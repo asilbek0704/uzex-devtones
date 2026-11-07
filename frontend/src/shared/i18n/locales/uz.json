@@ -1,6 +1,74 @@
 {
-  "home": {
-    "title": "UzEx — prototip",
-    "description": "Frontend ishga tushdi. src/pages/home sahifasidan boshlang."
+  "app": {
+    "name": "Ishonch birjasi"
+  },
+  "units": {
+    "t": "t",
+    "sum": "so‘m"
+  },
+  "header": {
+    "nav": "Asosiy navigatsiya",
+    "language": "Interfeys tili"
+  },
+  "nav": {
+    "lots": "Birja",
+    "pool": "Birlashish",
+    "profile": "Profil",
+    "sellerLots": "Mening lotlarim"
+  },
+  "persona": {
+    "switch": "Kim sifatida kirish",
+    "role": {
+      "buyer": "Xaridor",
+      "seller": "Sotuvchi"
+    },
+    "newcomer": "yangi"
+  },
+  "footer": {
+    "disclaimer": "UZEX AI Hackathon uchun demo. Kompaniyalar, narxlar va reytinglar shartli. Eskrou, kliring va yetkazib berish — namunaviy."
+  },
+  "lot": {
+    "volume": "lotda",
+    "perTonne": "tonnasi uchun",
+    "until": "{{date}}gacha",
+    "delivery": "yetkazib berish",
+    "admission": {
+      "available": "Butun hajmni olish mumkin",
+      "limited": "Sizga — {{max}} t gacha"
+    }
+  },
+  "lots": {
+    "title": "<m>Bugun</m> nima sotib olish mumkin",
+    "lead": "Brokersiz va vositachilarsiz. Garov ishonch reytingingizga bog‘liq: qanchalik halol savdo qilsangiz, shunchalik kam bo‘ladi.",
+    "listLabel": "Lotlar",
+    "error": "Lotlarni yuklab bo‘lmadi. Internetni tekshirib, qayta urinib ko‘ring.",
+    "retry": "Qayta urinish",
+    "empty": "Hozircha ochiq lotlar yo‘q.",
+    "pool": {
+      "title": "Butun lot kerak emasmi?",
+      "text": "Sun’iy intellekt xuddi shunday talabga ega qo‘shnilarni topadi: birgalikda ulgurji narxda sotib olasiz va yetkazib berishni bo‘lishasiz.",
+      "action": "Birlashish"
+    }
+  },
+  "deposit": {
+    "title": "Hozirgi garovingiz",
+    "rating": "Ishonch reytingi",
+    "next_one": "Yana <b>{{count}}</b> ta halol bitim — reyting <b>{{rating}}</b>, garov <b>{{pct}}%</b>",
+    "next_other": "Yana <b>{{count}}</b> ta halol bitim — reyting <b>{{rating}}</b>, garov <b>{{pct}}%</b>",
+    "best": "Siz eng ishonchli ishtirokchilardansiz: bundan kam garov bo‘lmaydi.",
+    "scaleLabel": "Reyting: 100 dan {{rating}}, garov {{pct}}%",
+    "how": "Reyting nimalardan tashkil topadi",
+    "error": "Garovni yuklab bo‘lmadi.",
+    "scaleLegend": "Shkalada reytingingiz, bo‘linmalar ostida — garov"
+  },
+  "stub": {
+    "lot": "Lot va ariza",
+    "pool": "Birgalikda xarid",
+    "seller": "Qoidalar va arizalar",
+    "profile": "Profil",
+    "notFound": "Bunday sahifa yo‘q",
+    "text": "Bu ekran keyingi bosqichda paydo bo‘ladi.",
+    "notFoundText": "Havola eskirgan bo‘lishi mumkin.",
+    "back": "Bosh sahifaga"
   }
 }

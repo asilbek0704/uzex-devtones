@@ -1,0 +1,56 @@
+@use '@/shared/styles/mixins' as *;
+
+.trigger,
+.item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-width: 0;
+}
+
+.item {
+  justify-content: space-between;
+}
+
+.who {
+  display: grid;
+  min-width: 0;
+  line-height: 1.25;
+}
+
+.name {
+  font-size: 15px;
+  font-weight: 500;
+}
+
+.role {
+  font-size: 13px;
+  color: var(--graphite);
+}
+
+.trigger .role {
+  white-space: nowrap;
+
+  @include sm {
+    display: none;
+  }
+}
+
+.trigger .name {
+  max-width: 220px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+
+  @include sm {
+    max-width: 140px;
+  }
+}
+
+// Место под переключатель, пока грузится список персонажей
+.placeholder {
+  width: 220px;
+  height: 48px;
+  border-radius: var(--radius-pill);
+  background: var(--paper);
+}

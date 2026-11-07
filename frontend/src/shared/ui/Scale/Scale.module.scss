@@ -38,6 +38,47 @@
   }
 }
 
+.tick {
+  position: absolute;
+  top: -3px;
+  bottom: -3px;
+  width: 2px;
+  margin-left: -1px;
+  border-radius: 1px;
+  background: var(--island-line);
+}
+
+.tickHighlighted {
+  background: var(--accent);
+}
+
+// Подписи делений: первая прижата влево, остальные центрированы под делением
+.marks {
+  position: relative;
+  height: 20px;
+  margin-top: 10px;
+  font-size: 13px;
+  font-variant-numeric: tabular-nums;
+  color: var(--muted-on-island);
+}
+
+.mark {
+  position: absolute;
+  top: 0;
+  transform: translateX(-50%);
+  white-space: nowrap;
+
+  &:first-child,
+  &:last-child {
+    transform: none;
+  }
+}
+
+.markHighlighted {
+  color: var(--on-island);
+  font-weight: 500;
+}
+
 .ends {
   display: flex;
   justify-content: space-between;

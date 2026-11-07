@@ -1,0 +1,96 @@
+@use '@/shared/styles/mixins' as *;
+
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  grid-template-areas: 'logo nav tools';
+  align-items: center;
+  gap: 24px;
+  min-height: 76px;
+  padding: 0 var(--gutter);
+  border-bottom: 1px solid var(--line);
+  background: var(--canvas);
+
+  @include md {
+    grid-template-columns: auto 1fr;
+    grid-template-areas:
+      'logo tools'
+      'nav nav';
+    gap: 0 12px;
+    min-height: 64px;
+    padding-top: 8px;
+  }
+}
+
+.logo {
+  grid-area: logo;
+  color: var(--ink);
+  text-decoration: none;
+  border-radius: var(--radius-input);
+}
+
+.nav {
+  grid-area: nav;
+  min-width: 0;
+
+  @include md {
+    margin: 0 calc(-1 * var(--gutter));
+    padding: 8px var(--gutter) 10px;
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+}
+
+.navList {
+  display: flex;
+  justify-content: center;
+  gap: 4px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+
+  @include md {
+    justify-content: flex-start;
+  }
+}
+
+.navItem {
+  display: inline-flex;
+  align-items: center;
+  height: 40px;
+  padding: 0 16px;
+  border-radius: var(--radius-pill);
+  color: var(--graphite);
+  font-size: 15px;
+  font-weight: 500;
+  white-space: nowrap;
+  text-decoration: none;
+  transition:
+    background-color var(--dur-fast) ease,
+    color var(--dur-fast) ease;
+  @include pressable;
+
+  @include hover {
+    &:hover {
+      background: var(--paper);
+      color: var(--ink);
+    }
+  }
+}
+
+.active {
+  background: var(--paper);
+  color: var(--ink);
+}
+
+.tools {
+  grid-area: tools;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 12px;
+  min-width: 0;
+}
