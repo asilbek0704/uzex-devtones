@@ -1,0 +1,9 @@
+# Общие правила ruff для backend/api и backend/ml-service.
+# Используются и в pre-commit (scripts/ruff.sh), и в CI.
+target-version = "py312"
+
+[lint]
+# E/F — ошибки и pyflakes, I — сортировка импортов, B — типичные баги, UP — современный синтаксис
+select = ["E", "F", "I", "B", "UP"]
+# Длину строк контролирует форматтер
+ignore = ["E501"]

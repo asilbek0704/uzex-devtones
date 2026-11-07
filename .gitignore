@@ -38,3 +38,12 @@ venv/
 *.joblib
 *.pkl
 mlruns/
+
+# Claude Code: личные настройки и черновики ИИ
+CLAUDE.local.md
+.scratch/
+.claude/settings.local.json
+# Скилл impeccable ставит себе каждый: npx impeccable install
+.claude/skills/impeccable/
+.claude/agents/impeccable-*.md
+.impeccable/config.local.json
