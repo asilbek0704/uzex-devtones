@@ -1,0 +1,48 @@
+// Брейкпоинты и медиа-хелперы. Подключение в модулях:
+//   @use '@/shared/styles/mixins' as *;
+
+@mixin lg {
+  @media (max-width: 1180px) {
+    @content;
+  }
+}
+
+@mixin md {
+  @media (max-width: 900px) {
+    @content;
+  }
+}
+
+@mixin sm {
+  @media (max-width: 560px) {
+    @content;
+  }
+}
+
+// Ховер только на устройствах с мышью
+@mixin hover {
+  @media (hover: hover) and (pointer: fine) {
+    @content;
+  }
+}
+
+@mixin reduced-motion {
+  @media (prefers-reduced-motion: reduce) {
+    @content;
+  }
+}
+
+// Нажатие: лёгкое сжатие
+@mixin pressable($scale: 0.97) {
+  transition: transform var(--dur-press) var(--ease-out);
+
+  &:active {
+    transform: scale($scale);
+  }
+
+  @include reduced-motion {
+    &:active {
+      transform: none;
+    }
+  }
+}

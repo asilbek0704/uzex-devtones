@@ -1,0 +1,57 @@
+// Дизайн-токены «Биржи доверия». Источник: артефакт дизайнера (light only).
+:root {
+  color-scheme: light;
+
+  // Поверхности
+  --canvas: #ffffff;
+  --paper: #f5f5eb;
+  --paper-2: #ebebdf;
+  --line: #d2d2c8;
+  --stone: #919183;
+
+  // Текст
+  --ink: #14140f;
+  --graphite: #6e6e64;
+
+  // Тёмный «остров» (карточки с деньгами)
+  --island: #30302a;
+  --island-2: #3c3c35;
+  --island-line: #55554c;
+  --on-island: #f5f5eb;
+  --muted-on-island: #b9b9ad;
+
+  // Акценты и статусы
+  --accent: #34eb77;
+  --accent-hover: #2bd96a;
+  --live: #e5484d;
+  --warning: #f5a524;
+
+  // Товары
+  --flour: #a87920;
+  --sugar: #3a87d6;
+  --cement: #7e8591;
+
+  // Радиусы
+  --radius-input: 8px;
+  --radius-inner: 18px;
+  --radius-card: 28px;
+  --radius-pill: 9999px;
+
+  // Движение
+  --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+  --ease-in-out: cubic-bezier(0.77, 0, 0.175, 1);
+  --dur-press: 160ms;
+  --dur-fast: 200ms;
+  --dur-base: 250ms;
+  --dur-reveal: 450ms;
+
+  // Типографика и сетка
+  --font:
+    Onest, ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Arial,
+    sans-serif;
+  --gutter: 40px;
+
+  @media (max-width: 900px) {
+    --gutter: 20px;
+  }
+}
