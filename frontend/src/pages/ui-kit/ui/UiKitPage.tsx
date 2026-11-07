@@ -4,6 +4,7 @@ import {
   AiNote,
   AskInput,
   Button,
+  ButtonLink,
   Card,
   Chip,
   Compare,
@@ -17,11 +18,13 @@ import {
   ListRow,
   LiveStatus,
   Logo,
+  Menu,
   Mark,
   PoolBar,
   Scale,
   SegmentedControl,
   Stat,
+  StatusLabel,
   StatGroup,
   Stepper,
   Summary,
@@ -61,6 +64,8 @@ export function UiKitPage() {
   const [query, setQuery] = useState('Нужно 3 т муки в Фергану до 15 ноября')
   const [changed, setChanged] = useState(false)
   const [live, setLive] = useState<'active' | 'alert' | 'done'>('active')
+  const [lang, setLang] = useState<'ru' | 'uz'>('ru')
+  const [persona, setPersona] = useState('stroyplus')
 
   return (
     <main className={s.page}>
@@ -94,6 +99,9 @@ export function UiKitPage() {
           </Button>
           <TextLink>Показать сбор пула ещё раз</TextLink>
         </div>
+        <ButtonLink to="/ui-kit" withArrow>
+          Ссылка как кнопка (ButtonLink)
+        </ButtonLink>
       </Section>
 
       <Section title="Поле запроса и чипы">
@@ -134,6 +142,44 @@ export function UiKitPage() {
           ]}
         />
         <Hint>Одна машина развезёт всех по маршруту 14 ноября.</Hint>
+        <SegmentedControl
+          size="sm"
+          aria-label="Язык интерфейса"
+          value={lang}
+          onChange={setLang}
+          options={[
+            { value: 'ru', label: 'RU' },
+            { value: 'uz', label: 'UZ' },
+          ]}
+        />
+        <Hint>Компактный вариант (size=&quot;sm&quot;) — для шапки.</Hint>
+      </Section>
+
+      <Section title="Меню и статусы">
+        <Menu
+          label="Войти как"
+          align="start"
+          selectedId={persona}
+          onSelect={setPersona}
+          trigger={
+            persona === 'stroyplus' ? 'СтройПлюс · новичок' : 'Мегастрой'
+          }
+          items={[
+            {
+              id: 'stroyplus',
+              content: 'СтройПлюс — новичок, сделок пока нет',
+            },
+            { id: 'megastroy', content: 'Мегастрой — надёжный участник' },
+          ]}
+        />
+        <div className={s.row}>
+          <StatusLabel tone="positive">Можно весь объём</StatusLabel>
+          <StatusLabel tone="warning">Вам — до 5 т</StatusLabel>
+          <StatusLabel tone="negative">
+            Продавец пускает участников от рейтинга 60
+          </StatusLabel>
+          <StatusLabel tone="neutral">Без оценки</StatusLabel>
+        </div>
       </Section>
 
       <Section title="ИИ">
@@ -252,26 +298,31 @@ export function UiKitPage() {
             total={{ label: 'Итого', value: '14 466 000 сум' }}
           />
           <Scale
-            position={47}
-            startLabel="15% — новичок"
-            endLabel="0% — рейтинг 90"
-            aria-label="Залог 8% из возможных 15%"
+            position={40}
+            marks={[
+              { at: 0, label: '15%' },
+              { at: 40, label: '10%' },
+              { at: 60, label: '6%', highlighted: true },
+              { at: 80, label: '3%' },
+              { at: 90, label: '0–1%' },
+            ]}
+            aria-label="Рейтинг 40 из 100, залог 10%"
           />
         </Card>
         <Card variant="island" className={s.wide}>
           <StatGroup>
             <Stat
               label="Рейтинг доверия"
-              value={changed ? 48 : 42}
-              delta="+6"
-              previous="было 42"
+              value={changed ? 61 : 58}
+              delta="+3"
+              previous="было 58"
               showChange={changed}
             />
             <Stat
               label="Залог в следующий раз"
-              value={changed ? '7%' : '8%'}
-              delta="−1%"
-              previous="было 8%"
+              value={changed ? '6%' : '10%'}
+              delta="−4%"
+              previous="было 10%"
               showChange={changed}
             />
           </StatGroup>
