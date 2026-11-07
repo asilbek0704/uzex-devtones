@@ -1,6 +1,17 @@
-export { useLots } from './api/queries'
+export {
+  ApiError,
+  useLot,
+  useLots,
+  usePlaceBid,
+  useQuote,
+  useQuoteExplanation,
+} from './api/queries'
 export type {
+  Bid,
   Lot,
+  LotDetails,
+  Quote,
+  SellerRule,
   MyAdmission,
   Product,
   ProductCode,

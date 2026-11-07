@@ -1,7 +1,17 @@
 // Демо-данные вместо бэкенда, по контракту docs/api-contract.md.
 // Допуск рассчитан заранее под каждого персонажа — на бэкенде его считают формулы.
 import type { Localized } from '@/shared/api'
-import type { Lot, MyAdmission, ProductCode, Reason } from '../model/types'
+import { participantForQuote } from '@/entities/participant/@x/lot'
+import type {
+  Bid,
+  Lot,
+  LotDetails,
+  MyAdmission,
+  ProductCode,
+  Quote,
+  Reason,
+  SellerRule,
+} from '../model/types'
 
 type Lang = 'ru' | 'uz'
 
@@ -136,4 +146,133 @@ export function lotsFixture(participantId: string, lang: Lang): Lot[] {
     deliveryUntil: lot.deliveryUntil,
     myAdmission: admissionFor(lot.id, participantId, lang),
   }))
+}
+
+const RULES: Record<string, SellerRule> = {
+  'cement-40': { minRating: 40, newcomerMaxVolumeT: 5 },
+  'sugar-60': { minRating: 60, newcomerMaxVolumeT: null },
+}
+
+export function lotFixture(
+  lotId: string,
+  participantId: string,
+  lang: Lang,
+): LotDetails | null {
+  const lot = lotsFixture(participantId, lang).find((item) => item.id === lotId)
+  return lot ? { ...lot, rule: RULES[lot.id] ?? null } : null
+}
+
+const VOLUME_EXCEEDS: Localized = {
+  ru: 'В лоте меньше тонн, чем в заявке',
+  uz: 'Lotda arizadagidan kamroq tonna bor',
+}
+
+/** Расчёт заявки — на бэкенде это делают открытые формулы PRD */
+export function quoteFixture(
+  lotId: string,
+  participantId: string,
+  volumeT: number,
+  lang: Lang,
+): Quote | null {
+  const lot = lotFixture(lotId, participantId, lang)
+  if (!lot) return null
+  const me = participantForQuote(participantId, lang)
+  const admission = lot.myAdmission
+
+  let reason: Reason | null = null
+  let maxVolumeT: number | null = null
+  if (admission.status === 'unavailable') {
+    reason = admission.reason
+  } else if (volumeT > lot.volumeT) {
+    reason = { code: 'volume_exceeds_lot', message: VOLUME_EXCEEDS[lang] }
+    maxVolumeT = lot.volumeT
+  } else if (admission.status === 'limited') {
+    maxVolumeT = admission.maxVolumeT
+    if (volumeT > admission.maxVolumeT) reason = admission.reason
+  }
+
+  const goodsAmount = volumeT * lot.pricePerT
+  return {
+    volumeT,
+    admitted: reason === null,
+    reason,
+    maxVolumeT,
+    goodsAmount,
+    deposit: {
+      pct: me.deposit.pct,
+      amount: Math.round((goodsAmount * me.deposit.pct) / 100),
+      tierMinRating: me.deposit.tierMinRating,
+      next: me.deposit.next,
+    },
+    comparison: {
+      uzexToday: { brokerRequired: true, depositPctMax: 10 },
+      trustedExample: { rating: 92, depositPct: 1 },
+    },
+  }
+}
+
+const sum = (value: number, lang: Lang) =>
+  `${new Intl.NumberFormat('ru-RU').format(value)} ${lang === 'uz' ? 'so‘m' : 'сум'}`
+
+/** Пояснение ИИ к расчёту; цифры подставлены из формул, а не придуманы моделью */
+export function quoteExplanationFixture(
+  lotId: string,
+  participantId: string,
+  volumeT: number,
+  lang: Lang,
+): string {
+  const quote = quoteFixture(lotId, participantId, volumeT, lang)
+  if (!quote) return ''
+  const me = participantForQuote(participantId, lang)
+  const { deposit } = quote
+  const ru = lang === 'ru'
+
+  if (quote.reason?.code === 'rule_newcomer_volume') {
+    return ru
+      ? `Продавец задал правило: новичкам — не больше ${quote.maxVolumeT} т. У вас пока нет завершённых сделок, поэтому заявка на ${volumeT} т не проходит. Возьмите ${quote.maxVolumeT} т сейчас или доберите объём вместе с соседями в пуле.`
+      : `Sotuvchi qoida belgilagan: yangi ishtirokchilarga ${quote.maxVolumeT} t dan oshmasin. Sizda hali yakunlangan bitimlar yo‘q, shuning uchun ${volumeT} t lik ariza o‘tmaydi. Hozir ${quote.maxVolumeT} t oling yoki qolganini qo‘shnilar bilan birgalikda xaridda oling.`
+  }
+  if (quote.reason?.code === 'rule_min_rating') {
+    return ru
+      ? `Продавец пускает участников с рейтингом от 60, а у вас ${me.rating}. Это правило одинаково для всех. Каждая честная сделка поднимает рейтинг — этот лот откроется, когда вы дойдёте до 60.`
+      : `Sotuvchi reytingi 60 dan yuqori ishtirokchilarni qabul qiladi, sizniki esa ${me.rating}. Bu qoida hamma uchun bir xil. Har bir halol bitim reytingni oshiradi — 60 ga yetganingizda bu lot ochiladi.`
+  }
+  if (quote.reason?.code === 'volume_exceeds_lot') {
+    return ru
+      ? `В этом лоте ${quote.maxVolumeT} т — больше взять нельзя. Уменьшите объём или посмотрите другие лоты.`
+      : `Bu lotda ${quote.maxVolumeT} t bor — undan ko‘p olib bo‘lmaydi. Hajmni kamaytiring yoki boshqa lotlarni ko‘ring.`
+  }
+  if (deposit.next) {
+    return ru
+      ? `Ваш залог ${deposit.pct}% — ${sum(deposit.amount, lang)}, потому что рейтинг ${me.rating}. Это как задаток на UZEX сегодня, только без брокера. Ещё ${deposit.next.dealsNeeded} честные сделки — рейтинг ${deposit.next.rating}, и залог снизится до ${deposit.next.pct}%.`
+      : `Garovingiz ${deposit.pct}% — ${sum(deposit.amount, lang)}, chunki reytingingiz ${me.rating}. Bu bugungi UZEX dagi zakalat kabi, faqat brokersiz. Yana ${deposit.next.dealsNeeded} ta halol bitim — reyting ${deposit.next.rating}, garov ${deposit.next.pct}% gacha tushadi.`
+  }
+  const saved = Math.round((quote.goodsAmount * (10 - deposit.pct)) / 100)
+  return ru
+    ? `Ваш залог всего ${deposit.pct}% — ${sum(deposit.amount, lang)}: рейтинг ${me.rating} и ни одного срыва. При рейтинге 40 залог был бы 10%, так что честная история оставляет у вас в обороте ${sum(saved, lang)}.`
+    : `Garovingiz atigi ${deposit.pct}% — ${sum(deposit.amount, lang)}: reyting ${me.rating} va birorta ham uzilish yo‘q. Reyting 40 bo‘lganda garov 10% bo‘lardi, ya’ni halol tarix aylanmangizda ${sum(saved, lang)} qoldiradi.`
+}
+
+export function bidFixture(
+  lotId: string,
+  participantId: string,
+  volumeT: number,
+  lang: Lang,
+): Bid | Reason {
+  const quote = quoteFixture(lotId, participantId, volumeT, lang)
+  if (!quote || !quote.admitted) {
+    return (
+      quote?.reason ?? {
+        code: 'volume_exceeds_lot',
+        message: VOLUME_EXCEEDS[lang],
+      }
+    )
+  }
+  return {
+    id: `bid-${Date.now()}`,
+    lotId,
+    volumeT,
+    deposit: { pct: quote.deposit.pct, amount: quote.deposit.amount },
+    status: 'deposit_held',
+  }
 }
