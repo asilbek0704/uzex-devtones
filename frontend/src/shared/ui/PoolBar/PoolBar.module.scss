@@ -1,0 +1,62 @@
+@use '@/shared/styles/mixins' as *;
+
+.bar {
+  display: flex;
+  gap: 3px;
+  height: 14px;
+  border-radius: var(--radius-pill);
+  background: var(--line);
+  overflow: hidden;
+}
+
+.lg {
+  height: 28px;
+  gap: 4px;
+}
+
+.seg {
+  flex: var(--t) 0 0;
+  min-width: 0;
+  border-radius: var(--radius-pill);
+  background: var(--ink);
+  animation: grow 520ms var(--ease-out) backwards;
+  transition:
+    background-color var(--dur-base) ease,
+    opacity var(--dur-base) ease,
+    flex-grow 600ms var(--ease-in-out);
+
+  @include reduced-motion {
+    animation-name: fade;
+    transition: none;
+  }
+}
+
+.you {
+  background: var(--accent);
+}
+
+.leaving {
+  background: var(--live);
+  opacity: 0.55;
+}
+
+.free {
+  background: none;
+  animation: none;
+}
+
+// Новый участник «вырастает» слева направо
+@keyframes grow {
+  from {
+    clip-path: inset(0 100% 0 0 round 9999px);
+  }
+  to {
+    clip-path: inset(0 0 0 0 round 9999px);
+  }
+}
+
+@keyframes fade {
+  from {
+    opacity: 0;
+  }
+}

@@ -1,0 +1,40 @@
+# Секреты и локальные настройки окружения
+.env
+.env.*
+!.env.example
+
+# ОС
+.DS_Store
+Thumbs.db
+
+# IDE
+.idea/
+.vscode/*
+!.vscode/extensions.json
+!.vscode/settings.json
+*.swp
+
+# Node (frontend/ дополнительно содержит свой .gitignore от Vite)
+node_modules/
+dist/
+*.log
+coverage/
+
+# Python (backend/, ml-service/)
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+*.egg-info/
+.ipynb_checkpoints/
+
+# ML-артефакты (большие веса не храним в git)
+*.pt
+*.pth
+*.onnx
+*.joblib
+*.pkl
+mlruns/

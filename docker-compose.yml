@@ -1,0 +1,35 @@
+# Запуск всего стека одной командой:
+#   docker compose up --build
+#
+# Каждому сервису нужен свой Dockerfile в его папке (frontend/, backend/api/, backend/ml-service/).
+
+services:
+  frontend:
+    build: ./frontend
+    ports:
+      - "3000:3000"
+    environment:
+      - API_URL=http://backend:8000
+    depends_on:
+      - backend
+
+  backend:
+    build: ./backend/api
+    ports:
+      - "8000:8000"
+    environment:
+      - ML_SERVICE_URL=http://ml-service:8001
+      - DATA_DIR=/data
+    volumes:
+      - ./data:/data:ro
+    depends_on:
+      - ml-service
+
+  ml-service:
+    build: ./backend/ml-service
+    ports:
+      - "8001:8001"
+    environment:
+      - DATA_DIR=/data
+    volumes:
+      - ./data:/data:ro

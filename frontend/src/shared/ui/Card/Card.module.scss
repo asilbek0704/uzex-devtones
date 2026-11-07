@@ -1,0 +1,54 @@
+@use '@/shared/styles/mixins' as *;
+
+.card {
+  position: relative;
+  border-radius: var(--radius-card);
+  padding: 32px;
+  background: var(--paper);
+
+  & + & {
+    margin-top: 16px;
+  }
+
+  @include md {
+    padding: 24px;
+  }
+}
+
+.island {
+  background: var(--island);
+  color: var(--on-island);
+}
+
+.ai {
+  overflow: hidden;
+  padding-top: 36px;
+
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 0 0 auto 0;
+    height: 4px;
+    background: var(--accent);
+    animation: wipe var(--dur-reveal) var(--ease-out) both;
+
+    @include reduced-motion {
+      animation-name: fade;
+    }
+  }
+}
+
+@keyframes wipe {
+  from {
+    clip-path: inset(0 100% 0 0);
+  }
+  to {
+    clip-path: inset(0 0 0 0);
+  }
+}
+
+@keyframes fade {
+  from {
+    opacity: 0;
+  }
+}

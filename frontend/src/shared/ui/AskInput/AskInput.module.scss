@@ -1,0 +1,76 @@
+@use '@/shared/styles/mixins' as *;
+
+.ask {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 28px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-card);
+  background: var(--canvas);
+  transition:
+    border-color var(--dur-fast) ease,
+    box-shadow var(--dur-fast) ease;
+
+  > label {
+    flex: 1;
+    min-width: 0;
+  }
+
+  &:focus-within {
+    border-color: var(--ink);
+    box-shadow: 0 0 0 3px var(--accent);
+  }
+
+  @include sm {
+    padding-left: 20px;
+  }
+}
+
+.input {
+  display: block;
+  width: 100%;
+  min-height: 56px;
+  padding: 13px 0;
+  border: 0;
+  outline: 0;
+  background: none;
+  color: var(--ink);
+  font: 400 22px/1.3 var(--font);
+  resize: none;
+  overflow: hidden;
+
+  &::placeholder {
+    color: var(--graphite);
+  }
+
+  @include sm {
+    font-size: 18px;
+  }
+}
+
+.send {
+  flex: none;
+  display: grid;
+  place-items: center;
+  width: 56px;
+  height: 56px;
+  border: 0;
+  border-radius: var(--radius-pill);
+  background: var(--accent);
+  color: var(--ink);
+  cursor: pointer;
+  transition: background-color var(--dur-fast) ease;
+  @include pressable(0.95);
+
+  &:focus-visible {
+    outline: 2px solid var(--ink);
+    outline-offset: 2px;
+  }
+
+  @include hover {
+    &:hover {
+      background: var(--accent-hover);
+    }
+  }
+}

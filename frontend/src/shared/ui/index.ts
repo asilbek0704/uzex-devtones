@@ -1,0 +1,31 @@
+// Публичный API дизайн-системы. Импортируйте только отсюда:
+//   import { Button, Card } from '@/shared/ui'
+
+export { AiBadge } from './AiBadge/AiBadge'
+export { AiNote } from './AiNote/AiNote'
+export { AskInput } from './AskInput/AskInput'
+export { Button } from './Button/Button'
+export { Card } from './Card/Card'
+export { Chip } from './Chip/Chip'
+export { Compare, CompareCell } from './Compare/Compare'
+export { FieldList, type FieldItem } from './FieldList/FieldList'
+export { Icon, type IconName } from './Icon/Icon'
+export { List, ListRow } from './List/List'
+export { LiveStatus } from './LiveStatus/LiveStatus'
+export { Logo } from './Logo/Logo'
+export { PoolBar, type PoolBarSegment } from './PoolBar/PoolBar'
+export { RevealText } from './RevealText/RevealText'
+export { Scale } from './Scale/Scale'
+export {
+  SegmentedControl,
+  type SegmentedOption,
+} from './SegmentedControl/SegmentedControl'
+export { Stat, StatGroup } from './Stat/Stat'
+export { Stepper } from './Stepper/Stepper'
+export { Summary } from './Summary/Summary'
+export { Tag, TagGroup } from './Tag/Tag'
+export { TextLink } from './TextLink/TextLink'
+export { Timeline, type TimelineItem } from './Timeline/Timeline'
+export { TrustBadge, type TrustLevel } from './TrustBadge/TrustBadge'
+export { FieldLabel, Heading, Hint, Lead, Mark } from './Typography/Typography'
+export { VisuallyHidden } from './VisuallyHidden/VisuallyHidden'
