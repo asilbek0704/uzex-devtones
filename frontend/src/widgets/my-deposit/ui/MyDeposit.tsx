@@ -1,19 +1,14 @@
 import { Trans, useTranslation } from 'react-i18next'
 import { Link } from 'react-router'
 import {
+  DepositScale,
   RatingBadge,
   useDepositTiers,
   useMe,
-  type DepositTier,
 } from '@/entities/participant'
 import { useCurrentPersona, usePersonaPath } from '@/features/switch-persona'
-import { Card, Scale, type ScaleMark } from '@/shared/ui'
+import { Card } from '@/shared/ui'
 import s from './MyDeposit.module.scss'
-
-const tierPct = (tier: DepositTier) =>
-  tier.pctMin === tier.pctMax
-    ? `${tier.pctMin}%`
-    : `${tier.pctMin}–${tier.pctMax}%`
 
 /**
  * Тёмный остров «Ваш залог сейчас»: процент залога, уровень, рейтинг на шкале
@@ -43,11 +38,6 @@ export function MyDeposit() {
   const tier = tiers.data?.find(
     (item) => item.minRating === deposit.tierMinRating,
   )
-  const marks: ScaleMark[] | undefined = tiers.data?.map((item) => ({
-    at: item.minRating,
-    label: tierPct(item),
-    highlighted: item.minRating === deposit.next?.rating,
-  }))
 
   return (
     <Card variant="island" className={s.card}>
@@ -62,9 +52,10 @@ export function MyDeposit() {
         {tier && <span>{tier.label}</span>}
       </p>
 
-      <Scale
-        position={participant.rating}
-        marks={marks}
+      <DepositScale
+        rating={participant.rating}
+        tiers={tiers.data}
+        nextRating={deposit.next?.rating}
         aria-label={t('deposit.scaleLabel', {
           rating: participant.rating,
           pct: deposit.pct,
