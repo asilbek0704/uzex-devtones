@@ -1,0 +1,108 @@
+@use '@/shared/styles/mixins' as *;
+
+.card {
+  display: grid;
+  align-content: start;
+  min-height: 360px;
+
+  &[aria-busy='true'] {
+    animation: breathe 1.4s ease-in-out infinite alternate;
+
+    @include reduced-motion {
+      animation: none;
+    }
+  }
+}
+
+.title {
+  margin: 0;
+  font-size: 26px;
+  font-weight: 500;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  color: var(--on-island);
+}
+
+.muted {
+  margin: 0;
+  font-size: 15px;
+  color: var(--muted-on-island);
+}
+
+.pct {
+  margin-top: 20px;
+  font-size: 56px;
+  line-height: 1;
+  font-weight: 500;
+  letter-spacing: -0.03em;
+  font-variant-numeric: tabular-nums;
+
+  @include sm {
+    font-size: 44px;
+  }
+}
+
+.meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px 14px;
+  margin: 12px 0 0;
+  font-size: 15px;
+  color: var(--muted-on-island);
+}
+
+.rating {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.legend {
+  margin: 4px 0 0;
+  font-size: 13px;
+  color: var(--muted-on-island);
+}
+
+.next {
+  margin: 24px 0 0;
+  padding-top: 20px;
+  border-top: 1px solid var(--island-line);
+  font-size: 17px;
+  line-height: 1.45;
+  color: var(--muted-on-island);
+
+  b {
+    color: var(--on-island);
+    font-weight: 500;
+    font-variant-numeric: tabular-nums;
+  }
+}
+
+.link {
+  justify-self: start;
+  margin-top: 16px;
+  padding: 6px 0;
+  color: var(--on-island);
+  font-size: 15px;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  text-decoration-color: var(--island-line);
+  transition: text-decoration-color var(--dur-fast) ease;
+
+  &:focus-visible {
+    outline-color: var(--accent);
+  }
+
+  @include hover {
+    &:hover {
+      text-decoration-color: var(--accent);
+    }
+  }
+}
+
+@keyframes breathe {
+  to {
+    opacity: 0.85;
+  }
+}
