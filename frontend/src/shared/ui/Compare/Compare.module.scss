@@ -11,6 +11,36 @@
   }
 }
 
+.stacked {
+  grid-template-columns: 1fr;
+  gap: 8px;
+
+  // Строка: подпись и пояснение слева, число справа — компактно для узкой колонки
+  .cell {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    grid-template-areas:
+      'label value'
+      'caption value';
+    align-items: center;
+    column-gap: 16px;
+    padding: 14px 18px;
+  }
+
+  .label {
+    grid-area: label;
+  }
+
+  .value {
+    grid-area: value;
+    margin-top: 0;
+  }
+
+  .caption {
+    grid-area: caption;
+  }
+}
+
 .cell {
   padding: 20px 22px;
   border-radius: var(--radius-inner);

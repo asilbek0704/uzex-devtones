@@ -25,7 +25,13 @@ export function CompareCell({
   )
 }
 
+type CompareProps = {
+  children: ReactNode
+  /** Ячейки друг под другом — для узкой колонки */
+  stacked?: boolean
+}
+
 /** Сравнение двух вариантов бок о бок: «Одному» vs «В пуле» */
-export function Compare({ children }: { children: ReactNode }) {
-  return <div className={s.compare}>{children}</div>
+export function Compare({ children, stacked = false }: CompareProps) {
+  return <div className={cn(s.compare, stacked && s.stacked)}>{children}</div>
 }

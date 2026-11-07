@@ -12,10 +12,11 @@ type RevealTextProps = {
  * Чтобы проиграть анимацию заново, смените `key` у компонента.
  */
 export function RevealText({ children, step = 28 }: RevealTextProps) {
-  // split с группой даёт [слово, пробел, слово, …] — слова на чётных позициях
+  // split с группой даёт [слово, пробел, слово, …] — слова на чётных позициях.
+  // Режем только по обычным пробелам: неразрывный пробел в «648 000 сум» держит число целым.
   return (
     <>
-      {children.split(/(\s+)/).map((part, i) => {
+      {children.split(/([ \t\n]+)/).map((part, i) => {
         if (!part) return null
         if (i % 2 === 1) return part
         const delay = Math.min((i / 2) * step, 560)

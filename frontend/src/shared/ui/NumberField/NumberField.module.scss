@@ -1,0 +1,79 @@
+@use '@/shared/styles/mixins' as *;
+
+.field {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 4px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-pill);
+  background: var(--canvas);
+  transition:
+    border-color var(--dur-fast) ease,
+    box-shadow var(--dur-fast) ease;
+
+  &:focus-within {
+    border-color: var(--ink);
+  }
+}
+
+.step {
+  display: grid;
+  place-items: center;
+  flex: none;
+  width: 48px;
+  height: 48px;
+  border: 0;
+  border-radius: var(--radius-pill);
+  background: var(--paper);
+  color: var(--ink);
+  cursor: pointer;
+  transition: background-color var(--dur-fast) ease;
+  @include pressable(0.95);
+
+  @include hover {
+    &:not(:disabled):hover {
+      background: var(--paper-2);
+    }
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--ink);
+    outline-offset: 2px;
+  }
+
+  &:disabled {
+    color: var(--stone);
+    cursor: not-allowed;
+  }
+}
+
+.value {
+  display: inline-flex;
+  align-items: baseline;
+  justify-content: center;
+  gap: 6px;
+  min-width: 112px;
+  padding: 0 8px;
+}
+
+.input {
+  width: auto;
+  min-width: 2ch;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  background: none;
+  color: var(--ink);
+  font: 500 28px/1.2 var(--font);
+  letter-spacing: -0.02em;
+  font-variant-numeric: tabular-nums;
+  text-align: right;
+  caret-color: var(--ink);
+}
+
+.unit {
+  font-size: 20px;
+  font-weight: 500;
+  color: var(--graphite);
+}
